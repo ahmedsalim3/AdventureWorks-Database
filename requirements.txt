@@ -1,0 +1,4 @@
+streamlit
+google-generativeai
+python-dotenv
+altair==4.1.0
