@@ -47,7 +47,7 @@ prompt = [
     1. Find the 10 cheapest products in ascending order:\n
     SELECT ProductName, ProductPrice FROM products ORDER BY ProductPrice ASC LIMIT 10;\n
     2. Calculate the average age of all customers:\n
-    SELECT AVG(EXTRACT(YEAR FROM DATE('2023-01-17')) - EXTRACT(YEAR FROM BirthDate)) AS average_age FROM customers;\n
+    SELECT AVG((strftime('%Y', '2024-01-17') - strftime('%Y', BirthDate)) - (strftime('%m-%d', '2024-01-17') < strftime('%m-%d', BirthDate))) AS average_age FROM customers;\n
     3. List all customers whose annual income is less than 20,000 and who bought products in 2015:\n
     SELECT FirstName, LastName, AnnualIncome, ProductName, YEAR(OrderDate) AS Year FROM sales_2015 JOIN products ON sales_2015.ProductKey = products.ProductKey JOIN customers ON sales_2015.CustomerKey = customers.CustomerKey WHERE AnnualIncome < 20000;\n
     """
