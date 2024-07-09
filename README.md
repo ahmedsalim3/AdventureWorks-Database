@@ -1,8 +1,7 @@
 <p align= "center">
-<img src="https://img.shields.io/github/stars/amedsalim/Text-to-SQL-Generator?style=flat&color=orange"></a>
-<img src="https://hits.sh/github.com/amedsalim/Text-to-SQL-Generator.svg?label=views&color=orange"></a>
-<img src="https://img.shields.io/badge/PYTHON-3.9-orange"></a>
-<img src="https://img.shields.io/badge/Apache-2.0 license--3.0-orange"></a> 
+<img src="https://hits.sh/github.com/amedsalim/Text-to-SQL-Generator.git.svg?label=views&color=fe7d37">
+<img src="https://img.shields.io/badge/PYTHON-3.9-orange">
+<img src="https://img.shields.io/badge/Apache-2.0 license--3.0-orange">
 </p>
 
 <div align="center">
