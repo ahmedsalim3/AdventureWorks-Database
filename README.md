@@ -7,7 +7,7 @@
 
 <div align="center">
   
-[[`Blog`](https://amedsalim.github.io/posts/Text-to-SQL)] [[`Dataset`](https://www.kaggle.com/datasets/ukveteran/adventure-works)] [[`Demo App`](https://text-to-sql-generator.streamlit.app/)]
+[[`Blog`](https://amedsalim.github.io/posts/Text-to-SQL)] [[`Dataset`](https://www.kaggle.com/datasets/ukveteran/adventure-works)] [`Schema`](https://amedsalim.github.io/assets/img/RDBMS/img1.png) [[`Demo App`](https://text-to-sql-generator.streamlit.app/)]
   
 </div>
 
