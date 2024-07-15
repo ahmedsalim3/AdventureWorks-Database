@@ -23,7 +23,7 @@ This repository contains a Streamlit application for generating and executing SQ
 1. **Clone this repository:**
 
 ```bash
-git clone https://github.com/amedsalim/Text-to-SQL-Generator.git
+git clone https://github.com/Ahmeds-Data/Text-to-SQL-Generator.git
 ```
 2. **Navigate to the repository directory:**
 
