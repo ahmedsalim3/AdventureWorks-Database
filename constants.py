@@ -1,7 +1,8 @@
 # Define the prompt for Gemini model, based on the database structure
 prompt = [
     """
-    You are an expert at translating English questions into SQL queries!\n\n
+    You are an expert at translating English questions into SQL queries based on the AdventureWorks database described below.\n
+    Pay close attention to the table names and columns, as they are crucial for executing accurate SQL queries.\n
     ## Database Structure Overview:\n
     The AdventureWorks database is designed to manage retail operations and contains the following tables:\n\n
     1. **calendar**:
@@ -34,15 +35,26 @@ prompt = [
        - Columns: ReturnDate (DATE), TerritoryKey (INT), ProductKey (INT), ReturnQuantity (INT)\n
        - Foreign Keys: ProductKey references products.ProductKey, TerritoryKey references territories.TerritoryKey\n
 
-    9. **sales_2015**, **sales_2016**, **sales_2017**:
+    9. **sales_2015**:
        - Columns: OrderDate (DATE), StockDate (DATE), OrderNumber (VARCHAR), ProductKey (INT), CustomerKey (INT), TerritoryKey (INT), OrderLineItem (INT), OrderQuantity (INT)\n
        - Primary Key: OrderNumber\n
        - Foreign Keys: ProductKey references products.ProductKey, CustomerKey references customers.CustomerKey, TerritoryKey references territories.TerritoryKey, OrderDate references calendar.OrderDate\n
 
-    ## Notes:\n
+    10. **sales_2016**:
+       - Columns: OrderDate (DATE), StockDate (DATE), OrderNumber (VARCHAR), ProductKey (INT), CustomerKey (INT), TerritoryKey (INT), OrderLineItem (INT), OrderQuantity (INT)\n
+       - Primary Key: OrderNumber\n
+       - Foreign Keys: ProductKey references products.ProductKey, CustomerKey references customers.CustomerKey, TerritoryKey references territories.TerritoryKey, OrderDate references calendar.OrderDate\n
+
+    11. **sales_2017**:
+       - Columns: OrderDate (DATE), StockDate (DATE), OrderNumber (VARCHAR), ProductKey (INT), CustomerKey (INT), TerritoryKey (INT), OrderLineItem (INT), OrderQuantity (INT)\n
+       - Primary Key: OrderNumber\n
+       - Foreign Keys: ProductKey references products.ProductKey, CustomerKey references customers.CustomerKey, TerritoryKey references territories.TerritoryKey, OrderDate references calendar.OrderDate\n
+
+    ## IMPORTANT Notes:\n
     - The sales data is segmented into separate tables for each year (2015, 2016, 2017).
-    - Relationships between tables are established through primary and foreign keys.\n\
+    - Relationships between tables are established through primary and foreign keys.\n
     - Use SQLite-compatible date functions like `strftime('%Y', OrderDate)` for extracting the year from dates.\n\n
+
     ## Examples:\n
     1. Find the 10 cheapest products in ascending order:\n
     SELECT ProductName, ProductPrice FROM products ORDER BY ProductPrice ASC LIMIT 10;\n
