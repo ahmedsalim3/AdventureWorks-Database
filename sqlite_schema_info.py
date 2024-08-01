@@ -18,5 +18,5 @@ def print_table_info(sqlite_file):
 
     conn.close()
 
-sqlite_file = 'adventureworks.db'
+sqlite_file = 'adventureworks12.db'
 print_table_info(sqlite_file)

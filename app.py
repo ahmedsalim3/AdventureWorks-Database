@@ -17,22 +17,28 @@ import streamlit as st
 import sqlite3
 from dotenv import load_dotenv
 import os
-import google.generativeai as gg
+import google.generativeai as genai
 import pandas as pd
 from constants import prompt, random_questions
 import random
+import PIL.Image as PIL
 
 # Load Google Gemini API key from environment variables (.env file)
 # To get API Key, create one from here : https://aistudio.google.com/app/apikey
 load_dotenv()
-gg.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def get_gemini_response(question,prompt):
     """
     Function to load Google Gemini Model and generate SQL queries as response
     """
-    model=gg.GenerativeModel('gemini-pro')
-    res=model.generate_content([prompt[0],question])
+    img= PIL.open('AdventureWorks-Schema.png')
+    model=genai.GenerativeModel(model_name='models/gemini-1.5-flash',
+                                system_instruction=[
+                                    "You are an expert at translating English questions into SQL queries based on the AdventureWorks database described in the Schema Image, below",
+                                    "Pay close attention to the table names and columns, as they are crucial for executing accurate SQL queries."
+                                ])
+    res=model.generate_content([prompt[0],question, img])
     return res.text
 
 def read_sql_query(sql, db):

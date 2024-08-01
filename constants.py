@@ -1,67 +1,66 @@
 # Define the prompt for Gemini model, based on the database structure
 prompt = [
     """
-    You are an expert at translating English questions into SQL queries based on the AdventureWorks database described below.\n
-    Pay close attention to the table names and columns, as they are crucial for executing accurate SQL queries.\n
     ## Database Structure Overview:\n
-    The AdventureWorks database is designed to manage retail operations and contains the following tables:\n\n
-    1. **calendar**:
-       - Columns: OrderDate (DATE)\n
-       - Primary Key: OrderDate\n
+    The AdventureWorks database is designed to manage retail operations and contains the following tables:
+    1. 'calendar':
+       - Columns: OrderDate (DATE)
+       - Primary Key: OrderDate
 
-    2. **customers**:
-       - Columns: CustomerKey (INT), Prefix (VARCHAR), FirstName (VARCHAR), LastName (VARCHAR), BirthDate (DATE), MaritalStatus (VARCHAR), Gender (VARCHAR), TotalChildren (INT), EducationLevel (VARCHAR), EmailAddress (VARCHAR), AnnualIncome (INT), Occupation (VARCHAR), HomeOwner (CHAR)\n
-       - Primary Key: CustomerKey\n
+    2. 'customers':
+       - Columns: CustomerKey (INT), Prefix (VARCHAR), FirstName (VARCHAR), LastName (VARCHAR), BirthDate (DATE), MaritalStatus (VARCHAR), Gender (VARCHAR), TotalChildren (INT), EducationLevel (VARCHAR), EmailAddress (VARCHAR), AnnualIncome (INT), Occupation (VARCHAR), HomeOwner (CHAR)
+       - Primary Key: CustomerKey
 
-    3. **product_categories**:
-       - Columns: ProductCategoryKey (INT), CategoryName (VARCHAR)\n
-       - Primary Key: ProductCategoryKey\n
+    3. 'product_categories':
+       - Columns: ProductCategoryKey (INT), CategoryName (VARCHAR)
+       - Primary Key: ProductCategoryKey
 
-    5. **product_subcategories**:
-       - Columns: ProductSubcategoryKey (INT), SubcategoryName (VARCHAR), ProductCategoryKey (INT)\n
-       - Primary Key: ProductSubcategoryKey\n
-       - Foreign Key: ProductCategoryKey references product_categories.ProductCategoryKey\n
+    5. 'product_subcategories':
+       - Columns: ProductSubcategoryKey (INT), SubcategoryName (VARCHAR), ProductCategoryKey (INT)
+       - Primary Key: ProductSubcategoryKey
+       - Foreign Key: ProductCategoryKey references product_categories.ProductCategoryKey
 
-    6. **products**:
-       - Columns: ProductKey (INT), ProductSubcategoryKey (INT), ProductSKU (VARCHAR), ProductName (VARCHAR), ModelName (VARCHAR), ProductDescription (VARCHAR), ProductColor (VARCHAR), ProductSize (VARCHAR), ProductStyle (VARCHAR), ProductCost (DECIMAL), ProductPrice (DECIMAL)\n
-       - Primary Key: ProductKey\n
-       - Foreign Key: ProductSubcategoryKey references product_subcategories.ProductSubcategoryKey\n
+    6. 'products':
+       - Columns: ProductKey (INT), ProductSubcategoryKey (INT), ProductSKU (VARCHAR), ProductName (VARCHAR), ModelName (VARCHAR), ProductDescription (VARCHAR), ProductColor (VARCHAR), ProductSize (VARCHAR), ProductStyle (VARCHAR), ProductCost (DECIMAL), ProductPrice (DECIMAL)
+       - Primary Key: ProductKey
+       - Foreign Key: ProductSubcategoryKey references product_subcategories.ProductSubcategoryKey
 
-    7. **territories**:
-       - Columns: TerritoryKey (INT), Region (VARCHAR), Country (VARCHAR), Continent (VARCHAR)\n
-       - Primary Key: TerritoryKey\n
+    7. 'territories':
+       - Columns: TerritoryKey (INT), Region (VARCHAR), Country (VARCHAR), Continent (VARCHAR)
+       - Primary Key: TerritoryKey
 
-    8. **returns**:
-       - Columns: ReturnDate (DATE), TerritoryKey (INT), ProductKey (INT), ReturnQuantity (INT)\n
-       - Foreign Keys: ProductKey references products.ProductKey, TerritoryKey references territories.TerritoryKey\n
+    8. 'returns':
+       - Columns: ReturnDate (DATE), TerritoryKey (INT), ProductKey (INT), ReturnQuantity (INT)
+       - Foreign Keys: ProductKey references products.ProductKey, TerritoryKey references territories.TerritoryKey
 
-    9. **sales_2015**:
-       - Columns: OrderDate (DATE), StockDate (DATE), OrderNumber (VARCHAR), ProductKey (INT), CustomerKey (INT), TerritoryKey (INT), OrderLineItem (INT), OrderQuantity (INT)\n
-       - Primary Key: OrderNumber\n
-       - Foreign Keys: ProductKey references products.ProductKey, CustomerKey references customers.CustomerKey, TerritoryKey references territories.TerritoryKey, OrderDate references calendar.OrderDate\n
+    9. 'sales_2015':
+       - Columns: OrderDate (DATE), StockDate (DATE), OrderNumber (VARCHAR), ProductKey (INT), CustomerKey (INT), TerritoryKey (INT), OrderLineItem (INT), OrderQuantity (INT)
+       - Primary Key: OrderNumber
+       - Foreign Keys: ProductKey references products.ProductKey, CustomerKey references customers.CustomerKey, TerritoryKey references territories.TerritoryKey, OrderDate references calendar.OrderDate
 
-    10. **sales_2016**:
-       - Columns: OrderDate (DATE), StockDate (DATE), OrderNumber (VARCHAR), ProductKey (INT), CustomerKey (INT), TerritoryKey (INT), OrderLineItem (INT), OrderQuantity (INT)\n
-       - Primary Key: OrderNumber\n
-       - Foreign Keys: ProductKey references products.ProductKey, CustomerKey references customers.CustomerKey, TerritoryKey references territories.TerritoryKey, OrderDate references calendar.OrderDate\n
+    10. 'sales_2016':
+       - Columns: OrderDate (DATE), StockDate (DATE), OrderNumber (VARCHAR), ProductKey (INT), CustomerKey (INT), TerritoryKey (INT), OrderLineItem (INT), OrderQuantity (INT)
+       - Primary Key: OrderNumber
+       - Foreign Keys: ProductKey references products.ProductKey, CustomerKey references customers.CustomerKey, TerritoryKey references territories.TerritoryKey, OrderDate references calendar.OrderDate
 
-    11. **sales_2017**:
-       - Columns: OrderDate (DATE), StockDate (DATE), OrderNumber (VARCHAR), ProductKey (INT), CustomerKey (INT), TerritoryKey (INT), OrderLineItem (INT), OrderQuantity (INT)\n
-       - Primary Key: OrderNumber\n
-       - Foreign Keys: ProductKey references products.ProductKey, CustomerKey references customers.CustomerKey, TerritoryKey references territories.TerritoryKey, OrderDate references calendar.OrderDate\n
+    11. 'sales_2017':
+       - Columns: OrderDate (DATE), StockDate (DATE), OrderNumber (VARCHAR), ProductKey (INT), CustomerKey (INT), TerritoryKey (INT), OrderLineItem (INT), OrderQuantity (INT)
+       - Primary Key: OrderNumber
+       - Foreign Keys: ProductKey references products.ProductKey, CustomerKey references customers.CustomerKey, TerritoryKey references territories.TerritoryKey, OrderDate references calendar.OrderDate
 
-    ## IMPORTANT Notes:\n
+    ## IMPORTANT Notes:
+    - Check the attached image to know more details about the database structure.
     - The sales data is segmented into separate tables for each year (2015, 2016, 2017).
-    - Relationships between tables are established through primary and foreign keys.\n
-    - Use SQLite-compatible date functions like `strftime('%Y', OrderDate)` for extracting the year from dates.\n\n
+    - Relationships between tables are established through primary and foreign keys.
+    - Use SQLite-compatible date functions like `strftime('%Y', OrderDate)` for extracting the year from dates.
 
-    ## Examples:\n
-    1. Find the 10 cheapest products in ascending order:\n
-    SELECT ProductName, ProductPrice FROM products ORDER BY ProductPrice ASC LIMIT 10;\n
-    2. Calculate the average age of all customers:\n
-    SELECT AVG((strftime('%Y', '2024-01-17') - strftime('%Y', BirthDate)) - (strftime('%m-%d', '2024-01-17') < strftime('%m-%d', BirthDate))) AS average_age FROM customers;\n
-    3. List all customers whose annual income is less than 20,000 and who bought products in 2015:\n
-    SELECT FirstName, LastName, AnnualIncome, ProductName, YEAR(OrderDate) AS Year FROM sales_2015 JOIN products ON sales_2015.ProductKey = products.ProductKey JOIN customers ON sales_2015.CustomerKey = customers.CustomerKey WHERE AnnualIncome < 20000;\n
+    ## Examples:
+    1. Find the 10 cheapest products in ascending order:
+    SELECT ProductName, ProductPrice FROM products ORDER BY ProductPrice ASC LIMIT 10;
+    2. Calculate the average age of all customers:
+    SELECT AVG((strftime('%Y', '2024-01-17') - strftime('%Y', BirthDate)) - (strftime('%m-%d', '2024-01-17') < strftime('%m-%d', BirthDate))) AS average_age FROM customers;
+    3. List all customers whose annual income is less than 20,000 and who bought products in 2015:
+    SELECT FirstName, LastName, AnnualIncome, ProductName, YEAR(OrderDate) AS Year FROM sales_2015 JOIN products ON sales_2015.ProductKey = products.ProductKey JOIN customers ON sales_2015.CustomerKey = customers.CustomerKey WHERE AnnualIncome < 20000;
     """
 ]
 
@@ -86,5 +85,10 @@ random_questions = [
     "Identify the territory with the lowest sales revenue in 2015.",
     "List the names of customers who have more than two children and made a purchase in 2015.",
     "Group the customers by their education level, show their details too.",
+    "أظهر لي تفاصيل 5 منتجات تم بيعها في عام 2017، بما في ذلك سماتها الرئيسية مثل الاسم والتكلفة والسعر وهامش الربح وتاريخ الطلب",
+    "أرجو تزويدي بملخص عن العدد الإجمالي للإرجاعات حسب المنطقة",
+    "Fournir un résumé du nombre total de retours par région.",
+    "Identifier la sous-catégorie de produit la plus populaire en fonction du nombre de commandes en 2015.",
+    "Muéstrame los detalles de 5 productos vendidos en 2017, incluyendo sus atributos clave como nombre, costo, precio, margen de beneficio y fecha de pedido.",
     # Add more questions as needed
 ]
