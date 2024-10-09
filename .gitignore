@@ -1,8 +1,8 @@
 .devcontainer
 .gitattributes
 * text=auto
-genAI/
 *.pyc
 *.sqlite
 .env
 __pycache__/
+.streamlit/
