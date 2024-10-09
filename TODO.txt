@@ -1,4 +1,0 @@
-[x] Create the database and import data into the tables. Use MySQLDatabaseManager Class.
-[x] Dump and export MySQL database into directory. Use `mysqldump --skip-extended-insert --compact -u root -p DATABASE_NAME > DUMP_MYSQL_NAME.sql`
-[x] Convert the dumped database into sqlite3 database, use this website https://www.rebasedata.com/convert-mysql-to-sqlite-online , or mysql2sqlite -f dump-in-sqlite.db -d your_mysql_database -u your_mysql_user -p
-[x] mysql2sqlite -f db.db -d dump_mysql.sql -u root --mysql-password root1976519 -h 127.0.0.1
