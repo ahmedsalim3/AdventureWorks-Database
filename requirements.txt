@@ -1,5 +1,9 @@
-streamlit
-google-generativeai
-python-dotenv
+MySQL-python==1.2.5
+pandas==2.2.3
+pillow==10.4.0
+protobuf==5.28.2
+python-dotenv==1.0.1
+streamlit==1.39.0
+tqdm==4.66.5
+google-generativeai==0.8.2
 altair==4.1.0
-pillow
