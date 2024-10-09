@@ -1,6 +1,3 @@
-[submodule "mysql2sqlite/mysql2sqlite"]
-	path = mysql2sqlite/mysql2sqlite
-	url = git@github.com:dumblob/mysql2sqlite.git
 [submodule "rdbms/mysql2sqlite"]
 	path = rdbms/mysql2sqlite
 	url = git@github.com:dumblob/mysql2sqlite.git
