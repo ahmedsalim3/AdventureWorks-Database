@@ -12,7 +12,7 @@ genai.configure(api_key=API_KEY)
 
 def intro():
     """Main Home page intro"""
-    st.header("**Welcome to the AdventureWorks SQL Query Generator!**")
+    st.header("**Welcome to the AdventureWorks-Database!**")
     with st.expander("About the app"):
         st.info(
             "- This app uses Google [Gemini Flash](https://developers.googleblog.com/en/gemini-15-flash-8b-is-now-generally-available-for-use/) to convert natural language questions into SQL queries.  \n"
