@@ -30,7 +30,7 @@ This fle contains a Streamlit application for generating and executing SQL queri
 2. **Navigate to the repository directory:**
 
   ```bash
-  cd AdventureWorks-Database
+  cd AdventureWorks-Database/app
   ```
 
 3. **Create a Virtual Environment (Recommended):**
@@ -45,11 +45,6 @@ This fle contains a Streamlit application for generating and executing SQL queri
 
   ```bash
   pip install -r requirements.txt
-  ```
-5. **Navigate to `app` directory:**
-
-  ```bash
-  cd app
   ```
 
 5. **Create a new [Gemini API](https://aistudio.google.com/app/apikey) and place it in a [config.py](https://github.com/ahmedsalim3/AdventureWorks-Database/blob/6b06f38f9c4a191edc41857312b4654617d6cfd3/app/config.py#L16) file:**
