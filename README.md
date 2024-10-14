@@ -1,54 +1,74 @@
+# Adventureworks Database
+
+This repository is for setting up a relational MySQL database in Python, building a Text-to-SQL Streamlit app that translates plain language questions into SQL queries, and executing those SQL queries on the database to retrieve results.
+
 <p align= "center">
-<img src="https://hits.sh/github.com/amedsalim/Text-to-SQL-Generator.git.svg?label=views&color=fe7d37">
-<img src="https://img.shields.io/badge/PYTHON-3.9-orange">
+<img src="https://hits.sh/github.com/ahmedsalim3/AdventureWorks-Database/edit/main/app.svg?label=views&color=fe7d37">
+<img src="https://img.shields.io/badge/PYTHON-3.9+-orange">
 <img src="https://img.shields.io/badge/Apache-2.0 license--3.0-orange">
 </p>
 
-<div align="center">
-  
-[[`Blog`](https://ahmeds-data.github.io/posts/text-to-sql)] [[`Dataset`](https://www.kaggle.com/datasets/ukveteran/adventure-works)] [`Schema`](https://ahmeds-data.github.io/assets/img/RDBMS/AdventureWorks-Schema.png) [[`Demo App`](https://text-to-sql-generator.streamlit.app/)]
-  
-</div>
+## How to setup the database?
 
-# Text-to-SQL App with Gemini Pro LLM
-
-This repository contains a Streamlit application for generating and executing SQL queries using the Google Gemini API. The application interacts with a SQLite database populated with AdventureWorks sample data
-
-## Features
-- SQL Generation: Utilizes the Google Gemini API to translate natural language questions into SQL queries (SQLite)
-- Database Connectivity: Executes generated SQL queries on the AdventureWorks SQLite database
-- Streamlit Interface: Provides a user-friendly web interface for inputting questions and displaying query results
+In this [blog](https://ahmedsalim3.github.io/posts/adventureworks-database/), I cover the steps to create the database and convert it into SQLite. The [rdbms](./rdbms/) folder contains the code for this process. Refer to [TODO](./rdbms/TODO.md) for more details.
 
 ## Installation
+
 1. **Clone this repository:**
 
-```bash
-git clone https://github.com/Ahmeds-Data/Text-to-SQL-Generator.git
-```
+  ```bash
+  git clone https://github.com/ahmedsalim3/AdventureWorks-Database.git
+  ```
+
 2. **Navigate to the repository directory:**
 
-```bash
-cd Text-to-SQL-Generator
-```
+  ```bash
+  cd AdventureWorks-Database
+  ```
+
 3. **Create a Virtual Environment (Recommended):**
 
-```bash
-python -m venv env
-.\env\Scripts\activate  # On Windows
-source env/bin/activate  # On macOS/Linux
-```
+  ```bash
+  python -m venv env
+  .\env\Scripts\activate  # On Windows
+  source env/bin/activate  # On macOS/Linux
+  ```
+
 4. **Install Requirements:**
 
-```bash
-pip install -r requirements.txt
-```
-5. **Create a new [Gemini API](https://aistudio.google.com/app/apikey) and place it in a `.env` file:**
-```bash
-GOOGLE_API_KEY = 'Your API Key'
-```
+  ```bash
+  pip install -r requirements.txt
+  ```
 
-6. **Run the Streamlit application:**
+## Repo's directory structure
 
-```bash
-streamlit run app.py
+```sh
+.
+├── app                             <- Text-To-SQL Streamlit app
+│   ├── README.md
+│   ├── app.py
+│   ├── config.py
+│   ├── constants.py
+│   ├── requirements.txt
+│   └── ui
+│ 
+├── data                            <- Data source
+│ 
+├── rdbms                           <- Relational Database Management System
+│   ├── DUMP_adventureworks.sql
+│   ├── TODO.md
+│   ├── __init__.py
+│   ├── adventureworks.db
+│   ├── adventureworks_schema.png
+│   ├── assets
+│   ├── csv2mysql.py
+│   ├── install_mysql_linux.md
+│   ├── mysql2sqlite
+│   ├── schema.sql
+│   └── utils.py
+│ 
+├── LICENSE
+├── README.md
+└── requirements.txt
+
 ```
