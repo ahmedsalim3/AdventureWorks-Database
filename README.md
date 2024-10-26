@@ -3,9 +3,7 @@
 This repository is for setting up a relational MySQL database in Python, building a Text-to-SQL Streamlit app that translates plain language questions into SQL queries, and executing those SQL queries on the database to retrieve results.
 
 <p align= "center">
-<img src="https://hits.sh/github.com/ahmedsalim3/AdventureWorks-Database/edit/main/app.svg?label=views&color=fe7d37">
 <img src="https://img.shields.io/badge/PYTHON-3.9+-orange">
-<img src="https://img.shields.io/badge/Apache-2.0 license--3.0-orange">
 </p>
 
 ## How to setup the database?
