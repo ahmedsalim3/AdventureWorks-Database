@@ -1,3 +1,8 @@
+# pip install sqlite-vec google-generativeai
+# https://github.com/google-gemini/generative-ai-python/blob/main/docs/api/google/generativeai/embed_content.md
+# inspired from @ https://alexgarcia.xyz/sqlite-vec/python.html
+# sourced from @ https://github.com/asg017/sqlite-vec/blob/main/examples/simple-python/demo.py
+
 from rag.documents import SENTENCES, TABLES, SCHEMAS
 from google.generativeai.embedding import embed_content
 import sqlite3
@@ -95,12 +100,11 @@ class VectorDatabase:
             """,
             [self.serialize(query_embedding)],
         ).fetchall()
-
-        for row in results:
-            print(row)
+            
+        return results
 
 # Example
-if __name__ == "__main__":
-    db = VectorDatabase()
-    db.embed_sentences()
-    db.retrieval("how many items were returned in 2024?")
+# if __name__ == "__main__":
+#     db = VectorDatabase()
+#     db.embed_sentences()
+#     db.retrieval("how many items were returned in 2024?")
