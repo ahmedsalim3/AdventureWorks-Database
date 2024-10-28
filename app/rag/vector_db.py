@@ -103,8 +103,20 @@ class VectorDatabase:
             
         return results
 
-# Example
+# # Example
 # if __name__ == "__main__":
 #     db = VectorDatabase()
 #     db.embed_sentences()
-#     db.retrieval("how many items were returned in 2024?")
+#     # retrieve the top 3 results based on the query
+#     results = db.retrieval("how many items were returned in 2024?")
+    
+#     for i, row in enumerate(results):
+#         index = results[i][0]
+#         distance = results[i][1]
+#         sentence = results[i][2]
+#         table_name = results[i][3]
+#         table_schema = results[i][4]
+#         # print details of the first retrieval
+#         if i == 0:
+#             print(f'First table matched: {table_name}, Distance {distance}')
+#             print(sentence)
