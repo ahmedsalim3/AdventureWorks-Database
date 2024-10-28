@@ -76,7 +76,7 @@ class VectorDatabase:
                     [id, self.serialize(embedding)],
                 )
 
-    def retrieval(self, query: str):
+    def retrieval(self, query: str, k: int = 3):
         query_embedding = embed_content(
             model=EMBEDDING_MODEL,
             content=query,
@@ -95,21 +95,21 @@ class VectorDatabase:
             FROM vec_sentences
             LEFT JOIN sentences ON sentences.id = vec_sentences.id
             WHERE sentence_embedding MATCH ? 
-              AND k = 3
+              AND k = ?
             ORDER BY distance
             """,
-            [self.serialize(query_embedding)],
+            [self.serialize(query_embedding), k]
         ).fetchall()
-            
+        
         return results
 
-# # Example
+# # # Example
 # if __name__ == "__main__":
 #     db = VectorDatabase('rag/example/example.db')
 #     db.embed_sentences()
 #     # retrieve the top 3 results based on the query
-#     results = db.retrieval("how many items were returned in 2024?")
-    
+#     results = db.retrieval("how many items were returned in 2024?", 5)
+#     print(f"Number of retrievals: {len(results)}")
 #     for i, row in enumerate(results):
 #         index = results[i][0]
 #         distance = results[i][1]
