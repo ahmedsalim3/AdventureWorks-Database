@@ -92,3 +92,213 @@ random_questions = [
     "Muéstrame los detalles de 5 productos vendidos en 2017, incluyendo sus atributos clave como nombre, costo, precio, margen de beneficio y fecha de pedido.",
     # Add more questions as needed
 ]
+
+schema_info = (
+    """Only use the following tables:
+
+    CREATE TABLE calendar (
+        "OrderDate" DATE NOT NULL, 
+        PRIMARY KEY ("OrderDate")
+    )
+
+    /*
+    3 rows from calendar table:
+    OrderDate
+    2015-01-01
+    2015-01-02
+    2015-01-03
+    */
+
+
+    CREATE TABLE customers (
+        "CustomerKey" INTEGER NOT NULL, 
+        "Prefix" VARCHAR(100) NOT NULL, 
+        "FirstName" VARCHAR(100) NOT NULL, 
+        "LastName" VARCHAR(100) NOT NULL, 
+        "BirthDate" DATE NOT NULL, 
+        "MaritalStatus" VARCHAR(100) NOT NULL, 
+        "Gender" VARCHAR(100) NOT NULL, 
+        "EmailAddress" VARCHAR(100) NOT NULL, 
+        "AnnualIncome" INTEGER NOT NULL, 
+        "TotalChildren" INTEGER NOT NULL, 
+        "EducationLevel" VARCHAR(100) NOT NULL, 
+        "Occupation" VARCHAR(100) NOT NULL, 
+        "HomeOwner" VARCHAR(100) NOT NULL, 
+        PRIMARY KEY ("CustomerKey")
+    )
+
+    /*
+    3 rows from customers table:
+    CustomerKey	Prefix	FirstName	LastName	BirthDate	MaritalStatus	Gender	EmailAddress	AnnualIncome	TotalChildren	EducationLevel	Occupation	HomeOwner
+    11000	MR.	JON	YANG	1966-04-08	M	M	jon24@adventure-works.com	90000	2	Bachelors	Professional	Y
+    11001	MR.	EUGENE	HUANG	1965-05-14	S	M	eugene10@adventure-works.com	60000	3	Bachelors	Professional	N
+    11002	MR.	RUBEN	TORRES	1965-08-12	M	M	ruben35@adventure-works.com	60000	3	Bachelors	Professional	Y
+    */
+
+
+    CREATE TABLE product_categories (
+        "ProductCategoryKey" INTEGER NOT NULL, 
+        "CategoryName" VARCHAR(100) DEFAULT NULL, 
+        PRIMARY KEY ("ProductCategoryKey")
+    )
+
+    /*
+    3 rows from product_categories table:
+    ProductCategoryKey	CategoryName
+    1	Bikes
+    2	Components
+    3	Clothing
+    */
+
+
+    CREATE TABLE product_subcategories (
+        "ProductSubcategoryKey" INTEGER NOT NULL, 
+        "SubcategoryName" VARCHAR(100) DEFAULT NULL, 
+        "ProductCategoryKey" INTEGER DEFAULT NULL, 
+        PRIMARY KEY ("ProductSubcategoryKey"), 
+        FOREIGN KEY("ProductCategoryKey") REFERENCES product_categories ("ProductCategoryKey")
+    )
+
+    /*
+    3 rows from product_subcategories table:
+    ProductSubcategoryKey	SubcategoryName	ProductCategoryKey
+    1	Mountain Bikes	1
+    2	Road Bikes	1
+    3	Touring Bikes	1
+    */
+
+
+    CREATE TABLE products (
+        "ProductKey" INTEGER NOT NULL, 
+        "ProductSubcategoryKey" INTEGER DEFAULT NULL, 
+        "ProductSKU" VARCHAR(100) NOT NULL, 
+        "ProductName" VARCHAR(100) NOT NULL, 
+        "ModelName" VARCHAR(100) NOT NULL, 
+        "ProductDescription" VARCHAR(250) NOT NULL, 
+        "ProductColor" VARCHAR(100) NOT NULL, 
+        "ProductSize" VARCHAR(100) NOT NULL, 
+        "ProductStyle" VARCHAR(100) NOT NULL, 
+        "ProductCost" DECIMAL(10, 4) NOT NULL, 
+        "ProductPrice" DECIMAL(10, 4) NOT NULL, 
+        PRIMARY KEY ("ProductKey"), 
+        FOREIGN KEY("ProductSubcategoryKey") REFERENCES product_subcategories ("ProductSubcategoryKey")
+    )
+
+    /*
+    3 rows from products table:
+    ProductKey	ProductSubcategoryKey	ProductSKU	ProductName	ModelName	ProductDescription	ProductColor	ProductSize	ProductStyle	ProductCost	ProductPrice
+    214	31	HL-U509-R	\"Sport-100 Helmet, Red\"	Sport-100	\"Universal fit, well-vented, lightweight , snap-on visor.\"	Red	0	0	13.0863	34.9900
+    215	31	HL-U509	\"Sport-100 Helmet, Black\"	Sport-100	\"Universal fit, well-vented, lightweight , snap-on visor.\"	Black	0	0	12.0278	33.6442
+    218	23	SO-B909-M	\"Mountain Bike Socks, M\"	Mountain Bike Socks	Combination of natural and synthetic fibers stays dry and provides just the right cushioning.	White	M	U	3.3963	9.5000
+    */
+
+
+    CREATE TABLE returns (
+        "ReturnDate" DATE NOT NULL, 
+        "TerritoryKey" INTEGER NOT NULL, 
+        "ProductKey" INTEGER NOT NULL, 
+        "ReturnQuantity" INTEGER NOT NULL, 
+        FOREIGN KEY("TerritoryKey") REFERENCES territories ("TerritoryKey"), 
+        FOREIGN KEY("ProductKey") REFERENCES products ("ProductKey")
+    )
+
+    /*
+    3 rows from returns table:
+    ReturnDate	TerritoryKey	ProductKey	ReturnQuantity
+    2015-01-18	9	312	1
+    2015-01-18	10	310	1
+    2015-01-21	8	346	1
+    */
+
+
+    CREATE TABLE sales_2015 (
+        "OrderDate" DATE NOT NULL, 
+        "StockDate" DATE NOT NULL, 
+        "OrderNumber" VARCHAR(100) NOT NULL, 
+        "ProductKey" INTEGER NOT NULL, 
+        "CustomerKey" INTEGER NOT NULL, 
+        "TerritoryKey" INTEGER NOT NULL, 
+        "OrderLineItem" INTEGER NOT NULL, 
+        "OrderQuantity" INTEGER NOT NULL, 
+        PRIMARY KEY ("OrderNumber"), 
+        FOREIGN KEY("OrderDate") REFERENCES calendar ("OrderDate"), 
+        FOREIGN KEY("TerritoryKey") REFERENCES territories ("TerritoryKey"), 
+        FOREIGN KEY("CustomerKey") REFERENCES customers ("CustomerKey"), 
+        FOREIGN KEY("ProductKey") REFERENCES products ("ProductKey")
+    )
+
+    /*
+    3 rows from sales_2015 table:
+    OrderDate	StockDate	OrderNumber	ProductKey	CustomerKey	TerritoryKey	OrderLineItem	OrderQuantity
+    2015-01-01	2001-09-21	SO2015-1	332	14657	1	1	1
+    2015-01-03	2001-09-29	SO2015-10	310	29170	4	1	1
+    2015-01-17	2001-10-23	SO2015-100	313	29238	4	1	1
+    */
+
+
+    CREATE TABLE sales_2016 (
+        "OrderDate" DATE NOT NULL, 
+        "StockDate" DATE NOT NULL, 
+        "OrderNumber" VARCHAR(100) NOT NULL, 
+        "ProductKey" INTEGER NOT NULL, 
+        "CustomerKey" INTEGER NOT NULL, 
+        "TerritoryKey" INTEGER NOT NULL, 
+        "OrderLineItem" INTEGER NOT NULL, 
+        "OrderQuantity" INTEGER NOT NULL, 
+        PRIMARY KEY ("OrderNumber"), 
+        FOREIGN KEY("OrderDate") REFERENCES calendar ("OrderDate"), 
+        FOREIGN KEY("TerritoryKey") REFERENCES territories ("TerritoryKey"), 
+        FOREIGN KEY("CustomerKey") REFERENCES customers ("CustomerKey"), 
+        FOREIGN KEY("ProductKey") REFERENCES products ("ProductKey")
+    )
+
+    /*
+    3 rows from sales_2016 table:
+    OrderDate	StockDate	OrderNumber	ProductKey	CustomerKey	TerritoryKey	OrderLineItem	OrderQuantity
+    2016-01-01	2002-10-17	SO2016-1	385	14335	1	1	1
+    2016-01-02	2002-09-12	SO2016-10	360	13647	9	1	1
+    2016-01-13	2002-09-25	SO2016-100	373	17632	10	1	1
+    */
+
+
+    CREATE TABLE sales_2017 (
+        "OrderDate" DATE NOT NULL, 
+        "StockDate" DATE NOT NULL, 
+        "OrderNumber" VARCHAR(100) NOT NULL, 
+        "ProductKey" INTEGER NOT NULL, 
+        "CustomerKey" INTEGER NOT NULL, 
+        "TerritoryKey" INTEGER NOT NULL, 
+        "OrderLineItem" INTEGER NOT NULL, 
+        "OrderQuantity" INTEGER NOT NULL, 
+        PRIMARY KEY ("OrderNumber"), 
+        FOREIGN KEY("OrderDate") REFERENCES calendar ("OrderDate"), 
+        FOREIGN KEY("TerritoryKey") REFERENCES territories ("TerritoryKey"), 
+        FOREIGN KEY("CustomerKey") REFERENCES customers ("CustomerKey"), 
+        FOREIGN KEY("ProductKey") REFERENCES products ("ProductKey")
+    )
+
+    /*
+    3 rows from sales_2017 table:
+    OrderDate	StockDate	OrderNumber	ProductKey	CustomerKey	TerritoryKey	OrderLineItem	OrderQuantity
+    2017-01-01	2003-12-13	SO2017-1	529	23791	1	2	2
+    2017-01-01	2003-09-27	SO2017-10	536	11530	6	1	2
+    2017-01-02	2003-09-08	SO2017-100	479	11099	9	3	1
+    */
+
+
+    CREATE TABLE territories (
+        "TerritoryKey" INTEGER NOT NULL, 
+        "Region" VARCHAR(100) DEFAULT NULL, 
+        "Country" VARCHAR(100) DEFAULT NULL, 
+        "Continent" VARCHAR(100) DEFAULT NULL, 
+        PRIMARY KEY ("TerritoryKey")
+    )
+
+    /*
+    3 rows from territories table:
+    TerritoryKey	Region	Country	Continent
+    1	Northwest	United States	North America
+    2	Northeast	United States	North America
+    3	Central	United States	North America
+    */"""
+)
