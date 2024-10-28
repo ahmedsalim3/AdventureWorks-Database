@@ -1,0 +1,7 @@
+name
+sentences
+vec_sentences
+vec_sentences_chunks
+sqlite_sequence
+vec_sentences_rowids
+vec_sentences_vector_chunks00

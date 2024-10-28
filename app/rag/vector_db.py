@@ -105,7 +105,7 @@ class VectorDatabase:
 
 # # Example
 # if __name__ == "__main__":
-#     db = VectorDatabase()
+#     db = VectorDatabase('rag/example/example.db')
 #     db.embed_sentences()
 #     # retrieve the top 3 results based on the query
 #     results = db.retrieval("how many items were returned in 2024?")
