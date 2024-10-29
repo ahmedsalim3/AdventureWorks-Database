@@ -6,6 +6,11 @@ This repository is for setting up a relational MySQL database in Python, buildin
 <img src="https://img.shields.io/badge/PYTHON-3.12-orange">
 </p>
 
+<div style="display: flex; justify-content: space-around;">
+    <img src="./app/ui/static/prompt-engineering.gif" alt="Prompt Engineering" style="height: 300px; object-fit: contain;">
+    <img src="./app/ui/static/rag.gif" alt="RAG" style="height: 300px; object-fit: contain;">
+</div>
+
 ## How to setup the database?
 
 In this [blog](https://ahmedsalim3.github.io/posts/adventureworks-database/), I cover the steps to create the database and convert it into SQLite. The [rdbms](./rdbms/) folder contains the code for this process. Refer to [TODO](./rdbms/TODO.md) for more details.
