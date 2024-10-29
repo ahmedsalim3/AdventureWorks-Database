@@ -10,8 +10,8 @@ This fle contains a Streamlit application for generating and executing SQL queri
   
 [[`Blog`](https://ahmedsalim3.github.io/posts/text-to-sql)] [[`Dataset`](https://www.kaggle.com/datasets/ukveteran/adventure-works)] [`Schema`](https://ahmedsalim3.github.io/posts/adventureworks-database/#entity-relationship-diagram-erd) [[`Streamlit App`](https://ai-sql.streamlit.app/)]
 <div style="display: flex; justify-content: space-around;">
-    <img src="./ui/static/prompt-engineering.gif" alt="Prompt Engineering" width="49%">
-    <img src="./ui/static/rag.gif" alt="RAG" width="49%">
+    <img src="./ui/static/prompt-engineering.gif" alt="Prompt Engineering" style="height: 300px; object-fit: contain;">
+    <img src="./ui/static/rag.gif" alt="RAG" style="height: 300px; object-fit: contain;">
 </div>
 
 </div>
