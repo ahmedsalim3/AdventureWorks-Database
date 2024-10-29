@@ -1,27 +1,27 @@
 TABLES = [
-    'calendar',
-    'customers',
-    'product_categories',
-    'product_subcategories',
-    'products',
-    'returns',
-    'sales_2015',
-    'sales_2016',
-    'sales_2017',
-    'territories',
+    "calendar",
+    "customers",
+    "product_categories",
+    "product_subcategories",
+    "products",
+    "returns",
+    "sales_2015",
+    "sales_2016",
+    "sales_2017",
+    "territories",
 ]
 
 SENTENCES = [
-    'The "`calendar` table stores unique order dates, serving as a reference for tracking sales and events." It has a Primary Key `OrderDate` only.',
-    'The `customers` table contains detailed information about each customer, including personal details, demographics, and financial status. It has a Primary Key `CustomerKey` only.',
-    'The `product_categories` table classifies products into categories, allowing for organized product management and reporting. It has a Primary Key `ProductCategoryKey` only.',
-    'The `product_subcategories` table further refines product classifications by linking subcategories to their respective categories. It has a Primary Key `ProductSubcategoryKey` and a Foreign Key `ProductCategoryKey` referencing `product_categories`.',
-    'The `products` table holds detailed information about each product, including specifications, pricing, and category associations. It has a Primary Key `ProductKey` and a Foreign Key `ProductSubcategoryKey` referencing `product_subcategories`.',
-    'The `returns` table records product returns, including details about the returned items, quantities, and associated territories. It has Foreign Keys `ProductKey` referencing `products` and `TerritoryKey` referencing `territories`.',
-    'The `sales_2015` table tracks sales transactions for the year 2015, capturing essential details about orders, products, and customers. It has a Primary Key `OrderNumber` and Foreign Keys `ProductKey` referencing `products`, `CustomerKey` referencing `customers`, `TerritoryKey` referencing `territories`, and `OrderDate` referencing `calendar`.',
-    'The `sales_2016` table documents sales transactions for 2016, providing insights into customer purchases and product performance. It has a Primary Key `OrderNumber` and Foreign Keys `ProductKey` referencing `products`, `CustomerKey` referencing `customers`, `TerritoryKey` referencing `territories`, and `OrderDate` referencing `calendar`.',
-    'The `sales_2017` table captures sales data for the year 2017, enabling analysis of trends and customer behavior over time. It has a Primary Key `OrderNumber` and Foreign Keys `ProductKey` referencing `products`, `CustomerKey` referencing `customers`, `TerritoryKey` referencing `territories`, and `OrderDate` referencing `calendar`.',
-    'The `territories` table defines geographical regions where sales occur, offering context for sales data and customer distribution. It has a Primary Key `TerritoryKey` only.',
+    "The `calendar` table stores unique order dates, serving as a reference for tracking sales and events. It has a Primary Key `OrderDate` only.",
+    "The `customers` table contains detailed information about each customer, including personal details, demographics, and financial status. It has a Primary Key `CustomerKey` only.",
+    "The `product_categories` table classifies products into categories, allowing for organized product management and reporting. It has a Primary Key `ProductCategoryKey` only.",
+    "The `product_subcategories` table further refines product classifications by linking subcategories to their respective categories. It has a Primary Key `ProductSubcategoryKey` and a Foreign Key `ProductCategoryKey` referencing `product_categories`.",
+    "The `products` table holds detailed information about each product, including specifications, pricing, and category associations. It has a Primary Key `ProductKey` and a Foreign Key `ProductSubcategoryKey` referencing `product_subcategories`.",
+    "The `returns` table records product returns, including details about the returned items, quantities, and associated territories. It has Foreign Keys `ProductKey` referencing `products` and `TerritoryKey` referencing `territories`.",
+    "The `sales_2015` table tracks sales transactions for the year 2015, capturing essential details about orders, products, and customers. It has a Primary Key `OrderNumber` and Foreign Keys `ProductKey` referencing `products`, `CustomerKey` referencing `customers`, `TerritoryKey` referencing `territories`, and `OrderDate` referencing `calendar`.",
+    "The `sales_2016` table documents sales transactions for 2016, providing insights into customer purchases and product performance. It has a Primary Key `OrderNumber` and Foreign Keys `ProductKey` referencing `products`, `CustomerKey` referencing `customers`, `TerritoryKey` referencing `territories`, and `OrderDate` referencing `calendar`.",
+    "The `sales_2017` table captures sales data for the year 2017, enabling analysis of trends and customer behavior over time. It has a Primary Key `OrderNumber` and Foreign Keys `ProductKey` referencing `products`, `CustomerKey` referencing `customers`, `TerritoryKey` referencing `territories`, and `OrderDate` referencing `calendar`.",
+    "The `territories` table defines geographical regions where sales occur, offering context for sales data and customer distribution. It has a Primary Key `TerritoryKey` only.",
 ]
 
 SCHEMAS = [
@@ -132,5 +132,5 @@ SCHEMAS = [
     `Country` varchar(100) DEFAULT NULL,
     `Continent` varchar(100) DEFAULT NULL,
     PRIMARY KEY (`TerritoryKey`)
-    )"""
+    )""",
 ]

@@ -14,6 +14,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
+
 class VectorDatabase:
     def __init__(self, db_path: str = ":memory:"):
         self.db = sqlite3.connect(db_path)
@@ -57,20 +58,22 @@ class VectorDatabase:
                 schema_definition = SCHEMAS[i]
                 self.db.execute(
                     "INSERT INTO sentences(id, sentence, table_name, schema_definition) VALUES(?, ?, ?, ?)",
-                    [i, sentence, table_name, schema_definition]
+                    [i, sentence, table_name, schema_definition],
                 )
 
     def embed_sentences(self):
         with self.db:
-            sentence_rows = self.db.execute("SELECT id, sentence, table_name, schema_definition FROM sentences").fetchall()
+            sentence_rows = self.db.execute(
+                "SELECT id, sentence, table_name, schema_definition FROM sentences"
+            ).fetchall()
             embeddings = embed_content(
                 model=EMBEDDING_MODEL,
                 content=[row[1] for row in sentence_rows],
-                task_type="SEMANTIC_SIMILARITY"
-            )['embedding']
+                task_type="SEMANTIC_SIMILARITY",
+            )["embedding"]
 
             logging.info(f"Number of sentence_rows: {len(sentence_rows)}")
-            
+
             for (id, _, _, _), embedding in zip(sentence_rows, embeddings):
                 self.db.execute(
                     "INSERT INTO vec_sentences(id, sentence_embedding) VALUES(?, ?)",
@@ -82,7 +85,7 @@ class VectorDatabase:
             model=EMBEDDING_MODEL,
             content=query,
             task_type="RETRIEVAL_DOCUMENT",
-            title = "Return"
+            title="Return",
         )["embedding"]
 
         results = self.db.execute(
@@ -99,12 +102,13 @@ class VectorDatabase:
               AND k = ?
             ORDER BY distance
             """,
-            [self.serialize(query_embedding), k]
+            [self.serialize(query_embedding), k],
         ).fetchall()
-        
+
         logging.info(f"Number of retrievals: {len(results)}")
-        
+
         return results
+
 
 # # # Example
 # if __name__ == "__main__":
