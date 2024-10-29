@@ -3,7 +3,7 @@
 This repository is for setting up a relational MySQL database in Python, building a Text-to-SQL Streamlit app that translates plain language questions into SQL queries, and executing those SQL queries on the database to retrieve results.
 
 <p align= "center">
-<img src="https://img.shields.io/badge/PYTHON-3.9+-orange">
+<img src="https://img.shields.io/badge/PYTHON-3.12-orange">
 </p>
 
 ## How to setup the database?
@@ -38,22 +38,55 @@ In this [blog](https://ahmedsalim3.github.io/posts/adventureworks-database/), I 
   pip install -r requirements.txt
   ```
 
+## Create Database
+
+- Navigate to `rdbms` and make sure to configure your database at [csv2mysql.py](./rdbms/csv2mysql.py#L69-L75), follow [TODO](./rdbms/TODO.md) file for more details
+
+    ```bash
+    cd rdbms
+    python csv2mysql.py 
+    ```
+
+## Run the App
+
+- From the root directory, run this:
+    
+    ```bash
+    python -m streamlit run app/app.py
+    ```
+
+## Install via DockFile
+
+    ```sh
+    docker build -t image_name .
+
+    docker run -p 8501:8501 image_name
+    ```
+
 ## Repo's directory structure
 
 ```sh
 .
 ├── app                             <- Text-To-SQL Streamlit app
 │   ├── README.md
+│   ├── _pages
+│   │   ├── prompt_page.py
+│   │   ├── rag_page.py
+│   │   └── utils.py
+│   ├── rag
+│   │   ├── documents.py
+│   │   └── vector_db.py
 │   ├── app.py
 │   ├── config.py
 │   ├── constants.py
+│   ├── prompting_text_to_sql.py
+│   ├── rag_text_to_sql.py
 │   ├── requirements.txt
 │   └── ui
 │ 
 ├── data                            <- Data source
 │ 
 ├── rdbms                           <- Relational Database Management System
-│   ├── DUMP_adventureworks.sql
 │   ├── TODO.md
 │   ├── __init__.py
 │   ├── adventureworks.db
@@ -67,6 +100,7 @@ In this [blog](https://ahmedsalim3.github.io/posts/adventureworks-database/), I 
 │ 
 ├── LICENSE
 ├── README.md
+├── Dockerfile
 └── requirements.txt
 
 ```
