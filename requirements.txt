@@ -1,9 +1,11 @@
 mysqlclient==2.2.4
 pandas==2.2.3
-pillow==10.4.0
+pillow
 protobuf==5.28.2
-python-dotenv==1.0.1
-streamlit==1.39.0
+python-dotenv
+streamlit
+st-pages
 tqdm==4.66.5
-google-generativeai==0.8.2
+google-generativeai
 altair==4.1.0
+sqlite-vec
