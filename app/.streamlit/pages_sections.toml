@@ -1,0 +1,14 @@
+[[pages]]
+name = "Prompt Engineering & RAG"
+icon = ":book:"
+is_section = true
+
+[[pages]]
+path = "_pages/prompt_page.py"
+name = "Propmpt Engineering App"
+icon = ":beginner:"
+
+[[pages]]
+path = "_pages/rag_page.py"
+name = "RAG App"
+icon = "📄"
