@@ -3,9 +3,7 @@
 This fle contains a Streamlit application for generating and executing SQL queries using the Google Gemini API. The application interacts with a SQLite database populated with AdventureWorks sample data
 
 <p align= "center">
-<img src="https://hits.sh/github.com/ahmedsalim3/AdventureWorks-Database/edit/main/app.svg?label=views&color=fe7d37">
 <img src="https://img.shields.io/badge/PYTHON-3.9+-orange">
-<img src="https://img.shields.io/badge/Apache-2.0 license--3.0-orange">
 </p>
 
 <div align="center">
