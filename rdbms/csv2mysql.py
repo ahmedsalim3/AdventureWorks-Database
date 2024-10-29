@@ -67,25 +67,26 @@ class MySQLDatabaseManager:
         
 if __name__ == "__main__":
     db_config = {
-        "host": "127.0.0.1",
-        "user": "root",
-        "password": "root1976519",
-        "database": "adventureworks",
-        "port": 3306
+        "host": "xxx.x.x.x",
+        "user": "xxxx",
+        "password": "xxxx",
+        "database": "test",
+        "port": 0000
     }
 
     db_manager = MySQLDatabaseManager(db_config)
-    db_manager.Setup('rdbms/schema.sql')
-    db_manager.Importer('data/AdventureWorks_Customers.csv', 'customers')
-    db_manager.Importer('data/AdventureWorks_Calendar.csv', 'calendar')
-    db_manager.Importer('data/AdventureWorks_Product_Categories.csv', 'product_categories')
-    db_manager.Importer('data/AdventureWorks_Product_Subcategories.csv', 'product_subcategories')
-    db_manager.Importer('data/AdventureWorks_Products.csv', 'products')
-    db_manager.Importer('data/AdventureWorks_Territories.csv', 'territories')
-    db_manager.Importer('data/AdventureWorks_Returns.csv', 'returns')
-    db_manager.Importer('data/AdventureWorks_Sales_2015.csv', 'sales_2015')
-    db_manager.Importer('data/AdventureWorks_Sales_2016.csv', 'sales_2016')
-    db_manager.Importer('data/AdventureWorks_Sales_2017.csv', 'sales_2017')
+    db_manager.Setup('schema.sql')
+    pwd = '../'
+    db_manager.Importer(pwd + 'data/AdventureWorks_Customers.csv', 'customers')
+    db_manager.Importer(pwd + 'data/AdventureWorks_Calendar.csv', 'calendar')
+    db_manager.Importer(pwd + 'data/AdventureWorks_Product_Categories.csv', 'product_categories')
+    db_manager.Importer(pwd + 'data/AdventureWorks_Product_Subcategories.csv', 'product_subcategories')
+    db_manager.Importer(pwd + 'data/AdventureWorks_Products.csv', 'products')
+    db_manager.Importer(pwd + 'data/AdventureWorks_Territories.csv', 'territories')
+    db_manager.Importer(pwd + 'data/AdventureWorks_Returns.csv', 'returns')
+    db_manager.Importer(pwd + 'data/AdventureWorks_Sales_2015.csv', 'sales_2015')
+    db_manager.Importer(pwd + 'data/AdventureWorks_Sales_2016.csv', 'sales_2016')
+    db_manager.Importer(pwd + 'data/AdventureWorks_Sales_2017.csv', 'sales_2017')
 
 
 
