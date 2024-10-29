@@ -10,7 +10,9 @@ import sqlite_vec
 import struct
 from typing import List
 from config import EMBEDDING_MODEL
+import logging
 
+logging.basicConfig(level=logging.INFO)
 
 class VectorDatabase:
     def __init__(self, db_path: str = ":memory:"):
@@ -67,9 +69,8 @@ class VectorDatabase:
                 task_type="SEMANTIC_SIMILARITY"
             )['embedding']
 
-            print("Number of sentence_rows:", len(sentence_rows))
-            print("Number of embeddings:", len(embeddings))
-
+            logging.info(f"Number of sentence_rows: {len(sentence_rows)}")
+            
             for (id, _, _, _), embedding in zip(sentence_rows, embeddings):
                 self.db.execute(
                     "INSERT INTO vec_sentences(id, sentence_embedding) VALUES(?, ?)",
@@ -101,6 +102,8 @@ class VectorDatabase:
             [self.serialize(query_embedding), k]
         ).fetchall()
         
+        logging.info(f"Number of retrievals: {len(results)}")
+        
         return results
 
 # # # Example
@@ -109,7 +112,6 @@ class VectorDatabase:
 #     db.embed_sentences()
 #     # retrieve the top 3 results based on the query
 #     results = db.retrieval("how many items were returned in 2024?", 5)
-#     print(f"Number of retrievals: {len(results)}")
 #     for i, row in enumerate(results):
 #         index = results[i][0]
 #         distance = results[i][1]
