@@ -9,7 +9,11 @@ This fle contains a Streamlit application for generating and executing SQL queri
 <div align="center">
   
 [[`Blog`](https://ahmedsalim3.github.io/posts/text-to-sql)] [[`Dataset`](https://www.kaggle.com/datasets/ukveteran/adventure-works)] [`Schema`](https://ahmedsalim3.github.io/posts/adventureworks-database/#entity-relationship-diagram-erd) [[`Streamlit App`](https://ai-sql.streamlit.app/)]
-![diagram](./ui/text-to-sql.gif)
+<div style="display: flex; justify-content: space-around;">
+    <img src="./ui/static/prompt-engineering.gif" alt="Prompt Engineering" width="49%">
+    <img src="./ui/static/rag.gif" alt="RAG" width="49%">
+</div>
+
 </div>
 
 ## Features
@@ -55,6 +59,16 @@ This fle contains a Streamlit application for generating and executing SQL queri
 
 6. **Run the Streamlit application:**
 
-  ```bash
-  streamlit run app.py
-  ```
+- From the [root](../) directory, run this:
+    
+    ```bash
+    python -m streamlit run app/app.py
+    ```
+
+## Install via DockFile
+
+    ```sh
+    docker build -t image_name .
+
+    docker run -p 8501:8501 image_name
+    ```
