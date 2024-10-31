@@ -62,11 +62,11 @@ In this [blog](https://ahmedsalim3.github.io/posts/adventureworks-database/), I 
 
 ## Install via DockFile
 
-    ```sh
-    docker build -t image_name .
+  ```
+  docker build -t image_name .
 
-    docker run -p 8501:8501 image_name
-    ```
+  docker run -p 8501:8501 image_name
+  ```
 
 ## Repo's directory structure
 
