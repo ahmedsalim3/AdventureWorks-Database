@@ -8,10 +8,9 @@ This fle contains a Streamlit application for generating and executing SQL queri
 
 <div align="center">
   
-[[`Blog`](https://ahmedsalim3.github.io/posts/text-to-sql)] [[`Dataset`](https://www.kaggle.com/datasets/ukveteran/adventure-works)] [`Schema`](https://ahmedsalim3.github.io/posts/adventureworks-database/#entity-relationship-diagram-erd) [[`Streamlit App`](https://ai-sql.streamlit.app/)]
+[[`Publication`](https://app.readytensor.ai/publications/unlocking_sql_converting_natural_language_into_query_results_with_generative_ai_hrWFsOxy9Yfy)] [[`Dataset`](https://www.kaggle.com/datasets/ukveteran/adventure-works)] [`Schema`](../rdbms/adventureworks_schema.png) [[`Streamlit App`](https://sql-unlocked.streamlit.app/)]
 <div style="display: flex; justify-content: space-around;">
-    <img src="./ui/static/prompt-engineering.gif" alt="Prompt Engineering" style="height: 300px; object-fit: contain;">
-    <img src="./ui/static/rag.gif" alt="RAG" style="height: 300px; object-fit: contain;">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/126220185/381777368-ad60713e-2f5c-4d1b-844d-22dca4a01581.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20241031%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241031T035159Z&X-Amz-Expires=300&X-Amz-Signature=9c2c44cd30d3af81d279df9a17bd1b806490f8c8c2d2cbfa728331f73ad7561f&X-Amz-SignedHeaders=host" alt="Prompt Engineering">
 </div>
 
 </div>
