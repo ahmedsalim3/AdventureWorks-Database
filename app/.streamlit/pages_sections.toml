@@ -4,11 +4,11 @@ icon = ":book:"
 is_section = true
 
 [[pages]]
-path = "_pages/prompt_page.py"
+path = "app/_pages/prompt_page.py"
 name = "Prompt Engineering App"
 icon = ":beginner:"
 
 [[pages]]
-path = "_pages/rag_page.py"
+path = "app/_pages/rag_page.py"
 name = "RAG App"
 icon = "📄"
