@@ -45,12 +45,20 @@ In this [blog](https://ahmedsalim3.github.io/posts/adventureworks-database/), I 
 
 ## Create Database
 
-- Navigate to `rdbms` and make sure to configure your database at [csv2mysql.py](./rdbms/csv2mysql.py#L69-L75), follow [TODO](./rdbms/TODO.md) file for more details
+1. Configure the database at [config](./src/config.py#L26-L32)
+
+2. run `MySQLDatabaseManager` class to create the database, follow [TODO](./src/rdbms/TODO.md) file for more details
 
     ```bash
     cd rdbms
-    python csv2mysql.py 
+    python -m src.rdbms.csv2mysql
     ```
+  
+3. To explore the database tables run:
+
+  ```bash
+  python -m src.rdbms.table_info
+  ```
 
 ## Run the App
 
