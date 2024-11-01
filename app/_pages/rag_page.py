@@ -1,6 +1,6 @@
 import streamlit as st
 from src.rag_text_to_sql import main as handle_question_with_rag
-from _pages.utils import *
+from app._pages.utils import *
 
 
 c1, c2 = st.columns([5, 5])
