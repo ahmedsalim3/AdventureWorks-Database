@@ -1,5 +1,5 @@
 import streamlit as st
-from rag_text_to_sql import main as handle_question_with_rag
+from src.rag_text_to_sql import main as handle_question_with_rag
 from _pages.utils import *
 
 
@@ -72,7 +72,7 @@ with c1:
 
 with c2:
     with st.expander("AdventureWorks Schema"):
-        st.image("rdbms/adventureworks_schema.png")
+        st.image("data/database/adventureworks_schema.png")
     with st.expander("RAG framework"):
         st.image("app/ui/static/rag.gif")
 

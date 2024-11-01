@@ -1,5 +1,5 @@
 import streamlit as st
-from prompting_text_to_sql import main as handle_question_with_prompt
+from src.prompting_text_to_sql import main as handle_question_with_prompt
 from _pages.utils import *
 
 
@@ -60,7 +60,7 @@ with c1:
         
 with c2:
     with st.expander("AdventureWorks Schema"):
-        st.image("rdbms/adventureworks_schema.png")
+        st.image("data/database/adventureworks_schema.png")
     with st.expander("Prompting framework"):
         st.image("app/ui/static/prompt-engineering.gif")
 

@@ -1,6 +1,6 @@
 import streamlit as st
 import random
-from constants import random_questions
+from src.constants import random_questions
 
 
 def init_values(key, value=None):
