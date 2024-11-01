@@ -17,6 +17,6 @@ COPY . .
 
 EXPOSE 8501  
 
-ENV PYTHONPATH=/app:/rdbms
+ENV PYTHONPATH="/app:/src:/mount/src:/mount/app"
 
 CMD ["streamlit", "run", "app/app.py"]
