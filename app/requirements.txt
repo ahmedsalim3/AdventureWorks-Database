@@ -1,7 +1,0 @@
-streamlit
-google-generativeai
-python-dotenv
-altair==4.1.0
-pillow
-sqlite-vec
-st-pages
