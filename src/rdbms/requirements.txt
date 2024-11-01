@@ -1,0 +1,4 @@
+mysqlclient==2.2.4
+tqdm==4.66.5
+protobuf==5.28.2
+pandas
