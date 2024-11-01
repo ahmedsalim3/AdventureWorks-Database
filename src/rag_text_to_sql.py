@@ -91,6 +91,6 @@ def main(question, number_of_retrieval=3):
     return retrieval, cleaned_sql, None, "No results found.", retry, question_with_error
         
 
-if __name__ == "__main__":
-    question = "Provide a breakdown of total sales quantities by region and country for each year from 2015 to 2017, from highest to lowest"
-    retrieval, sql, df, final_response, retrying, question_with_error = main(question)
+# if __name__ == "__main__":
+#     question = "Provide a breakdown of total sales quantities by region and country for each year from 2015 to 2017, from highest to lowest"
+#     retrieval, sql, df, final_response, retrying, question_with_error = main(question)
