@@ -3,13 +3,13 @@
 # inspired from @ https://alexgarcia.xyz/sqlite-vec/python.html
 # sourced from @ https://github.com/asg017/sqlite-vec/blob/main/examples/simple-python/demo.py
 
-from rag.documents import SENTENCES, TABLES, SCHEMAS
+from src.rag.documents import SENTENCES, TABLES, SCHEMAS
 from google.generativeai.embedding import embed_content
 import sqlite3
 import sqlite_vec
 import struct
 from typing import List
-from config import EMBEDDING_MODEL
+from src.config import EMBEDDING_MODEL
 import logging
 
 logging.basicConfig(level=logging.INFO)

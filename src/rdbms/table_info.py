@@ -1,4 +1,6 @@
 import sqlite3
+from src.config import DATABASE_DIR
+
 
 def table_info(sqlite_file):
     conn = sqlite3.connect(sqlite_file)
@@ -35,5 +37,5 @@ def table_info(sqlite_file):
 
     conn.close()
 
-sqlite_file = 'adventureworks.db'
-table_info(sqlite_file)
+
+table_info(DATABASE_DIR)

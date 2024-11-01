@@ -1,6 +1,7 @@
 from tqdm import tqdm
 import csv
 import MySQLdb
+from src.config import DB_CONFIG, DATABASE_SCHEMA, RAW_DATA
 
 class MySQLDatabaseManager:
     def __init__(self, db_config):
@@ -29,7 +30,7 @@ class MySQLDatabaseManager:
                 cursor.execute(statement)
         
         conn.commit()
-        print(f"{db_config['database']} Database schema was setup successfully!")
+        print(f"{self.db_config['database']} Database schema was setup successfully!")
         cursor.close()
         conn.close()
 
@@ -66,27 +67,18 @@ class MySQLDatabaseManager:
         
         
 if __name__ == "__main__":
-    db_config = {
-        "host": "xxx.x.x.x",
-        "user": "xxxx",
-        "password": "xxxx",
-        "database": "test",
-        "port": 0000
-    }
 
-    db_manager = MySQLDatabaseManager(db_config)
-    db_manager.Setup('schema.sql')
-    pwd = '../'
-    db_manager.Importer(pwd + 'data/AdventureWorks_Customers.csv', 'customers')
-    db_manager.Importer(pwd + 'data/AdventureWorks_Calendar.csv', 'calendar')
-    db_manager.Importer(pwd + 'data/AdventureWorks_Product_Categories.csv', 'product_categories')
-    db_manager.Importer(pwd + 'data/AdventureWorks_Product_Subcategories.csv', 'product_subcategories')
-    db_manager.Importer(pwd + 'data/AdventureWorks_Products.csv', 'products')
-    db_manager.Importer(pwd + 'data/AdventureWorks_Territories.csv', 'territories')
-    db_manager.Importer(pwd + 'data/AdventureWorks_Returns.csv', 'returns')
-    db_manager.Importer(pwd + 'data/AdventureWorks_Sales_2015.csv', 'sales_2015')
-    db_manager.Importer(pwd + 'data/AdventureWorks_Sales_2016.csv', 'sales_2016')
-    db_manager.Importer(pwd + 'data/AdventureWorks_Sales_2017.csv', 'sales_2017')
-
+    db_manager = MySQLDatabaseManager(DB_CONFIG)
+    db_manager.Setup(DATABASE_SCHEMA)
+    db_manager.Importer(RAW_DATA / 'AdventureWorks_Customers.csv', 'customers')
+    db_manager.Importer(RAW_DATA / 'AdventureWorks_Calendar.csv', 'calendar')
+    db_manager.Importer(RAW_DATA / 'AdventureWorks_Product_Categories.csv', 'product_categories')
+    db_manager.Importer(RAW_DATA / 'AdventureWorks_Product_Subcategories.csv', 'product_subcategories')
+    db_manager.Importer(RAW_DATA / 'AdventureWorks_Products.csv', 'products')
+    db_manager.Importer(RAW_DATA / 'AdventureWorks_Territories.csv', 'territories')
+    db_manager.Importer(RAW_DATA / 'AdventureWorks_Returns.csv', 'returns')
+    db_manager.Importer(RAW_DATA / 'AdventureWorks_Sales_2015.csv', 'sales_2015')
+    db_manager.Importer(RAW_DATA / 'AdventureWorks_Sales_2016.csv', 'sales_2016')
+    db_manager.Importer(RAW_DATA / 'AdventureWorks_Sales_2017.csv', 'sales_2017')
 
 

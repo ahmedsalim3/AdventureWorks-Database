@@ -1,10 +1,10 @@
 import google.generativeai as genai
 import pandas as pd
-from config import API_KEY, DATABASE_DIR, MODEL_NAME
+from src.config import API_KEY, DATABASE_DIR, MODEL_NAME
 import logging
-from rag.vector_db import VectorDatabase
-from constants import schema_info
-from utils import create_rag_prompt, execute_sql_query, format_answer_prompt
+from src.rag.vector_db import VectorDatabase
+from src.constants import schema_info
+from src.utils import create_rag_prompt, execute_sql_query, format_answer_prompt
 
 logging.basicConfig(level=logging.INFO)
 

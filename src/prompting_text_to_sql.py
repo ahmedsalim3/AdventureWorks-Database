@@ -1,10 +1,10 @@
 import google.generativeai as genai
 import pandas as pd
-from config import API_KEY, DATABASE_DIR, MODEL_NAME, IMAGE_PROMPT_PATH
+from src.config import API_KEY, DATABASE_DIR, MODEL_NAME, IMAGE_PROMPT_PATH
 import PIL.Image as PIL
 import logging
-from constants import prompt
-from utils import execute_sql_query, format_answer_prompt
+from src.constants import prompt
+from src.utils import execute_sql_query, format_answer_prompt
 
 logging.basicConfig(level=logging.INFO)
 
