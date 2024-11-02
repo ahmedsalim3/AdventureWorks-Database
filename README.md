@@ -52,7 +52,6 @@ Two approaches are used: **Prompt Engineering** and **Retrieval-Augmented Genera
 2. run `MySQLDatabaseManager` class to create the database, follow [TODO](./src/rdbms/TODO.md) file for more details
 
   ```bash
-  cd rdbms
   python3 -m src.rdbms.csv2mysql
   ```
   
@@ -62,19 +61,41 @@ Two approaches are used: **Prompt Engineering** and **Retrieval-Augmented Genera
   python3 -m src.rdbms.table_info
   ```
 
-## Run the App
+## Set Up Your API Key
 
-Get yor API KEY, and set it in [config](./src/config.py#L47-L55):
+1. Get your API key and set it in the [config](./src/config.py#L47-L55). You can obtain a free one from [here](https://aistudio.google.com/app/apikey), and make sure to uncomment the local run lines
+
+2. Paste it in the [.env_example](./.env_example) file and rename that file to `.env`.
+
+## Run the scripts
+
+You can run either the Prompt Engineering or the RAG approach from the [main file](./src/main.py). Just ask your question and choose the method.
 
   ```bash
-  python3 -m streamlit run app/app.py
+  python3 -m src.main
+  ```
+
+## Run the App
+
+To run the Streamlit app, use the following command:
+
+  ```bash
+  python3 -m streamlit run app.py
   ```
 
 ## Run the app via Dockerfile
 
-  ```
-  docker build -t image_name .
+To run the app using Docker, follow these steps:
 
+1. Build the Docker image:
+
+  ```sh
+  docker build -t image_name .
+  ```
+
+2. Run the Docker container:
+
+  ```sh
   docker run -p 8501:8501 image_name
   ```
 
