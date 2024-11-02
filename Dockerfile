@@ -19,4 +19,4 @@ EXPOSE 8501
 
 ENV PYTHONPATH="/app:/src:/mount/src:/mount/app"
 
-CMD ["streamlit", "run", "app/app.py"]
+CMD ["streamlit", "run", "app.py"]
