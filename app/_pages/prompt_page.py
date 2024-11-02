@@ -29,7 +29,6 @@ with c1:
                 handle_question_with_prompt(question)
             )
 
-            # sql, df, final_response, retrying, question_with_error = handle_question_with_prompt(question)
             if st.session_state.sql.startswith(("INSERT", "UPDATE", "DELETE")):
                 # STILL UNDER DEVELOPMENT
                 st.warning("You are not allowing to manipulate the database.")
@@ -43,13 +42,6 @@ with c1:
                             with st.chat_message("user"):
                                 st.write(f"{question_with_error}")
 
-                # st.markdown("</div>", unsafe_allow_html=True)
-                # st.markdown("##### AI response (SQL query)")
-                # st.code(sql, language="sql")
-
-                # if df is not None:
-                #     st.markdown("##### SQL response (Query results)")
-                #     st.dataframe(df)
                 
     if st.session_state.sql:
         st.markdown("##### AI response (SQL query)")
